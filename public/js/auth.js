@@ -1,6 +1,6 @@
 const form = document.querySelector('form');
 
-var url = window.location.hostname.includes('localhost')
+let url = window.location.hostname.includes('localhost')
   ? 'http://localhost:8080/api/auth/'
   : 'https://restserver-curso-fher.herokuapp.com/api/auth/';
 
@@ -21,6 +21,7 @@ form.addEventListener('submit', (event) => {
     .then(({ msg, token }) => {
       if (msg) return console.error(msg);
       localStorage.setItem('token', token);
+      window.location = 'chat.html';
     })
     .catch((err) => {
       console.error(err);
@@ -39,6 +40,7 @@ function onSignIn(response) {
     .then((resp) => resp.json())
     .then(({ token }) => {
       localStorage.setItem('token', token);
+      window.location = 'chat.html';
     })
     .catch((err) => {
       console.error(err);
