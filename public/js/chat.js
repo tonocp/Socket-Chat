@@ -100,6 +100,10 @@ txtMensaje.addEventListener('keyup', ({ keyCode }) => {
   socket.emit('enviar-mensaje', { mensaje, uid });
 });
 
+btnSalir.addEventListener('click', () => {
+  window.location = 'index.html';
+});
+
 const main = async () => {
   await validarJWT();
 };
